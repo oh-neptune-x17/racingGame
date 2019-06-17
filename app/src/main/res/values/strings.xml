@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RacingGame</string>
+    <string name="text_start">Start!</string>
+    <string name="start">Start!</string>
+    <string name="willBeContinued">Continue Game!</string>
+    <string name="gotoMainMenu">Go back to MainMenu</string>
+    <string name="win">You\'ve won!</string>
+    <string name="you_lost_c">You Lost :c</string>
+    <string name="exit">Exit</string>
+</resources>
