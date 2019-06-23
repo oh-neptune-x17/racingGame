@@ -14,8 +14,8 @@ public class obstaclesLoader {
         obstaclesManager obstManager;
         boolean loaded;
 
-        public obstaclesLoader(Bitmap center, int x, int y) {
-            bitmap=center;
+        public obstaclesLoader(Bitmap resourceLoaded, int x, int y) {
+            bitmap=resourceLoaded;
             this.x=x;
             this.y=y;
         }
