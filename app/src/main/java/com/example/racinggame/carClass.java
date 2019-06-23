@@ -16,7 +16,6 @@ public class carClass {
         boolean death;
         boolean up;
         float verticalSpeed;
-
         float animTime=0;
         float totalAnimTime = 1;
         float numFrames;
@@ -26,7 +25,7 @@ public class carClass {
             this.x = x;
             this.y = y;
             death=false;
-            screenHeight =screenheight;
+            screenHeight = screenheight;
             verticalSpeed = 0;
         }
 
@@ -42,18 +41,11 @@ public class carClass {
         }
 
         public void update(float dt){
-            if (death){
-                animTime += dt;
-            }
-            else {
-                verticalSpeed += screenHeight /2* dt;
+                verticalSpeed += screenHeight /2 * dt;
                 if (up)
-                    verticalSpeed -= screenHeight * dt*2;
-                y+= verticalSpeed * dt;
+                   verticalSpeed -= screenHeight* dt*2;
+                 y+= verticalSpeed* dt;
             }
-        }
-
-
 
         public boolean collision(Point obstacleTopLeft, Point obstacleTopRight, Point obstacleBottomRight, Point obstacleBottomLeft){
             Point topLeft = new Point();
@@ -77,19 +69,6 @@ public class carClass {
                             if(obstPoints.get(i).y<=bottomRight.y)
                                 return true;
             }
-            obstPoints.clear();
-            obstPoints.add(topLeft);
-            obstPoints.add(topRight);
-            obstPoints.add(bottomRight);
-            obstPoints.add(bottomLeft);
-            for (int i = 0; i<obstPoints.size(); i++){
-                if (obstacleBottomRight.x>=obstPoints.get(i).x)
-                    if (obstacleTopLeft.x<=obstPoints.get(i).x)
-                        if(obstPoints.get(i).y>=obstacleTopLeft.y)
-                            if(obstPoints.get(i).y<=obstacleBottomRight.y)
-                                return true;
-            }
-
             return false;
         }
 

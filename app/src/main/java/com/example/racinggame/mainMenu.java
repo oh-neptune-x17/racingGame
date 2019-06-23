@@ -27,8 +27,8 @@ public class mainMenu extends Activity {
         exitImgButton =  findViewById(R.id.img_button2);
         txt = findViewById(R.id.start_gameText);
 
-        startButton.setOnTouchListener(new buttonTouched(startImgButton));
-        exitButton.setOnTouchListener(new buttonTouched(exitImgButton));
+//        startButton.setOnTouchListener(new buttonTouched(startImgButton));
+//        exitButton.setOnTouchListener(new buttonTouched(exitImgButton));
 
         exitButton.setOnClickListener(new OnClickListener() {
             @Override

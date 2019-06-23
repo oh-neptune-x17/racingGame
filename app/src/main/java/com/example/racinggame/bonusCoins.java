@@ -31,10 +31,6 @@ public class bonusCoins {
         x -= obstaclesManager.game_panel.carSpeed * dt;
         }
 
-        public void setObstaclesManager(obstaclesManager mgr){
-            obstaclesManager = mgr;
-        }
-
         public ArrayList<Point> getPointsArray() {
             Point bottomLeft = new Point();
             Point bottomRight = new Point();
@@ -57,11 +53,12 @@ public class bonusCoins {
             return temp;
         }
 
-
+    public void setObstaclesManager(obstaclesManager mgr){
+        obstaclesManager = mgr;
+    }
         public void setX(int x) {
             this.x=x;
         }
-
         public void setY(int y) {
             this.y=y;
         }

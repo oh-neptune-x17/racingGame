@@ -4,13 +4,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-public class buttonTouched implements View.OnTouchListener {
+public class buttonTouched{// implements View.OnTouchListener {
     ImageView buttonImg;
 
     public buttonTouched(ImageView imageButton) {
         buttonImg = imageButton;
     }
-
+/*   // animations not fixed
     @Override
     public boolean onTouch(View arg0, MotionEvent event) {
         switch (event.getAction()) {
@@ -28,5 +28,5 @@ public class buttonTouched implements View.OnTouchListener {
         }
         return false;
     }
-
+*/
 }

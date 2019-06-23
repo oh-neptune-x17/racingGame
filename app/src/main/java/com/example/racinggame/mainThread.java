@@ -14,12 +14,9 @@ public class mainThread extends Thread {
         this.gamePanel = gamePanel;
         dt=0;
     }
-
     void setRunning(boolean running){
         this.running = running;
-
     }
-
     @Override
     public void run() {
         Canvas canvas;

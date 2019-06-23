@@ -1,6 +1,7 @@
 package com.example.racinggame;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,7 @@ public class gameActivity extends Activity{
         RelativeLayout mainGameLay;
         gameLogic gameWindow;
         TextView txt;
+        TextView tx2;
         int get_coins=0;
         int score=0;
 
@@ -36,7 +38,6 @@ public class gameActivity extends Activity{
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what==UPDATE_SCORE){
-
                     coinGatheredLogic();
                 }
                 if (msg.what==DEATH){
@@ -47,14 +48,12 @@ public class gameActivity extends Activity{
                             Message msg = handler.obtainMessage();
                             msg.what = LOSE;
                             handler.sendMessage(msg);
-
                         }
                     }, 3000);
                 }
                 if (msg.what==LOSE){
                     loseLogic();
                 }
-
                 super.handleMessage(msg);
             }
         };
@@ -70,9 +69,8 @@ public class gameActivity extends Activity{
             final int heightS = dm.heightPixels;
             final int widthS = dm.widthPixels;
             gameWindow = new gameLogic(getApplicationContext(),this,widthS, heightS);
+
             mainGameLay.addView(gameWindow);
-
-
             RelativeLayout RR = new RelativeLayout(this);
             RR.setBackgroundResource(R.drawable.btn);
             RR.setGravity(Gravity.CENTER);
@@ -83,17 +81,18 @@ public class gameActivity extends Activity{
             txt.setText("Score: " + score);
             RR.addView(txt);
 
-            LayoutInflater myInflater = (LayoutInflater) getApplicationContext().getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
+            getApplicationContext();
+            LayoutInflater myInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
             pauseButton = myInflater.inflate(R.layout.pause_layout, mainGameLay, false);
             pauseButton.setX(widthS-250);
             pauseButton.setY(0);
             mainGameLay.addView(pauseButton);
 
-            ImageView pauseImage = pauseButton.findViewById(R.id.PauseImage);
-            pauseButton.setOnTouchListener(new buttonTouched(pauseImage));
+           // ImageView pauseImage = pauseButton.findViewById(R.id.PauseImage);
+          //  pauseButton.setOnTouchListener(new buttonTouched(pauseImage));
             pauseButton.setOnClickListener(pauseClicked);
-            pauseButton.getLayoutParams().height=250;
-            pauseButton.getLayoutParams().width=250;
+            pauseButton.getLayoutParams().height = 250;
+            pauseButton.getLayoutParams().width = 250;
 
             pauseMenu = myInflater.inflate(R.layout.onpausemenu_layout, mainGameLay, false);
             mainGameLay.addView(pauseMenu);
@@ -101,22 +100,22 @@ public class gameActivity extends Activity{
 
             ImageView continueButton = pauseMenu.findViewById(R.id.imCont);
             ImageView toMainMenu = pauseMenu.findViewById(R.id.toMain);
-            continueButton.setOnTouchListener(new buttonTouched(continueButton));
+          //  continueButton.setOnTouchListener(new buttonTouched(continueButton));
             continueButton.setOnClickListener(continueClicked);
-            toMainMenu.setOnTouchListener(new buttonTouched(toMainMenu));
+           // toMainMenu.setOnTouchListener(new buttonTouched(toMainMenu));
             toMainMenu.setOnClickListener(this.toMainMenu);
 
             winInfo = myInflater.inflate(R.layout.win_layout, mainGameLay, false);
             mainGameLay.addView(winInfo);
             ImageView gotoMain = winInfo.findViewById(R.id.toMain);
-            gotoMain.setOnTouchListener(new buttonTouched(gotoMain));
+           // gotoMain.setOnTouchListener(new buttonTouched(gotoMain));
             gotoMain.setOnClickListener(this.toMainMenu);
             winInfo.setVisibility(View.GONE);
 
             lostInfo = myInflater.inflate(R.layout.lose_layout, mainGameLay, false);
             mainGameLay.addView(lostInfo);
             ImageView lostContinuation = lostInfo.findViewById(R.id.toMain);
-            lostContinuation.setOnTouchListener(new buttonTouched(lostContinuation));
+          //  lostContinuation.setOnTouchListener(new buttonTouched(lostContinuation));
             lostContinuation.setOnClickListener(this.toMainMenu);
             lostInfo.setVisibility(View.GONE);
         }
@@ -129,7 +128,6 @@ public class gameActivity extends Activity{
         public void onClick(View v) {
             gameWindow.thread.setRunning(false);
             gameActivity.this.finish();
-
         }
     };
 
@@ -166,6 +164,8 @@ public class gameActivity extends Activity{
         protected void loseLogic() {
             gameWindow.gamePaused =true;
             lostInfo.setVisibility(View.VISIBLE);
+            tx2 = lostInfo.findViewById(R.id.textView1);
+            tx2.setText("You've scored "+ score + " points");
         }
 
         protected void coinGatheredLogic() {
@@ -180,7 +180,6 @@ public class gameActivity extends Activity{
         private void winLogic() {
             gameWindow.gamePaused =true;
             winInfo.setVisibility(View.VISIBLE);
-
         }
 
     }

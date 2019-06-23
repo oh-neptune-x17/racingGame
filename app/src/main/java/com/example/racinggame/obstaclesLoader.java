@@ -49,7 +49,7 @@ public class obstaclesLoader {
                         obstManager.halfS = obstManager.halfS + new Random().nextInt(14);}
                     else{
                         obstManager.halfS = obstManager.halfS - new Random().nextInt(14);}
-                    y = obstManager.halfS - obstManager.sH /2 - bitmap.getHeight()/2;
+                    y = obstManager.halfS - obstManager.sH /2  - bitmap.getHeight()/2;
                 }
                 else
                 {
@@ -82,7 +82,6 @@ public class obstaclesLoader {
             temp.add(bottomLeft);
             return temp;
         }
-
     }
 
 

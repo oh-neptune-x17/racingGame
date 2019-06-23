@@ -11,13 +11,13 @@ public class moveBackground {
         int bgcnter;
         gameLogic gamePanel;
 
-        public moveBackground(Bitmap bitmap , int Screen_w, gameLogic Game_panel) {
+        public moveBackground(Bitmap bitmap , int Screen_w, gameLogic gamePanel) {
             this.bgTexture = bitmap;
             this.x=0;
             this.y=0;
             this.ScreenWidth=Screen_w;
-            bgcnter = ScreenWidth/ bgTexture.getWidth()+1;
-            gamePanel = Game_panel;
+            bgcnter = ScreenWidth/ bgTexture.getWidth();
+            this.gamePanel = gamePanel;
         }
 
         public void draw(Canvas canvas){
@@ -29,13 +29,11 @@ public class moveBackground {
             {
                 x = x + bgTexture.getWidth();
             }
-
         }
 
         public void update(float dt){
             x = (int) (x - gamePanel.carSpeed *dt);
         }
-
     }
 
 

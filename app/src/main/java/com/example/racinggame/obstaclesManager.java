@@ -9,7 +9,7 @@ public class obstaclesManager {
         private int obstperScreen;
         int screenH;
         int sH;
-        int whenBounce =-1;
+        int whenBounce = -1;
         int halfS;
         public gameLogic game_panel;
 
@@ -18,8 +18,9 @@ public class obstaclesManager {
 
         public obstaclesManager(Bitmap loadedTexture, gameLogic game_panel) {
             obstacleTexture = loadedTexture;
-            this.game_panel =game_panel;
+            this.game_panel = game_panel;
         }
+
         public void setScreen(int width, int height) {
             screenH = height;
             obstperScreen = ((width)/ obstacleTexture.getWidth())+2;
@@ -40,7 +41,7 @@ public class obstaclesManager {
             int h;
             sH = screenH;
             halfS =screenH/2;
-            int newsH = screenH * 3/5;
+            int newsH = screenH * 2/5;
             int gap =  (sH - newsH) / obstperScreen;
             for (int i = 0; i< obstperScreen +1; i++){
                 sH -= gap;
