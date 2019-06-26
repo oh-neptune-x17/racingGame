@@ -34,7 +34,7 @@ public class gameLogic extends SurfaceView implements SurfaceHolder.Callback {
         background = new moveBackground(BitmapFactory.decodeResource(getResources(), R.drawable.gamebackground), screenWidth, this);
         obstacleManager = new obstaclesManager(BitmapFactory.decodeResource(getResources(), R.drawable.obstaclesmall), this);
         obstacleManager.setScreen(screenWidth, screenHeight);
-        carObject = new carClass(BitmapFactory.decodeResource(getResources(), R.drawable.carsmall), 100, screenHeight/3, screenWidth, screenHeight);  // x and y are starting position of car
+        carObject = new carClass(BitmapFactory.decodeResource(getResources(), R.drawable.carsmall), 100, screenHeight/3, screenHeight);  // x and y are starting position of car
         coin = new bonusCoins(BitmapFactory.decodeResource(getResources(), R.drawable.coing), -200, -200);
         coin.setObstaclesManager(obstacleManager);
 
@@ -47,10 +47,10 @@ public class gameLogic extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            carObject.up = true;
+            carObject.screenTouched = true;
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            carObject.up = false;
+            carObject.screenTouched = false;
         }
         return true;
     }
@@ -72,7 +72,7 @@ public class gameLogic extends SurfaceView implements SurfaceHolder.Callback {
             background.update(dt);
             coin.update(dt);
             obstacleManager.update(dt);
-            ArrayList<Point> coin_point = new ArrayList<Point>(coin.getPointsArray());
+            ArrayList<Point> coin_point = new ArrayList<>(coin.getPointsArray());
             if (carObject.collision(coin_point.get(0), coin_point.get(1), coin_point.get(2), coin_point.get(3))) {
                 coin.setX(-200);
                 coin.setY(-200);
@@ -81,8 +81,8 @@ public class gameLogic extends SurfaceView implements SurfaceHolder.Callback {
                 obstacleManager.game_panel.game.handler.sendMessage(msg);
             }
             for (int i = 0; i < obstacleManager.topwall.size(); i++) {
-                ArrayList<Point> temp = new ArrayList<Point>(obstacleManager.topwall.get(i).getPointsArray());
-                ArrayList<Point> temp2 = new ArrayList<Point>(obstacleManager.bottomwall.get(i).getPointsArray());
+                ArrayList<Point> temp = new ArrayList<>(obstacleManager.topwall.get(i).getPointsArray());
+                ArrayList<Point> temp2 = new ArrayList<>(obstacleManager.bottomwall.get(i).getPointsArray());
                 if ((carObject.collision(temp.get(0), temp.get(1), temp.get(2), temp.get(3))) || (carObject.collision(temp2.get(0), temp2.get(1), temp2.get(2), temp2.get(3)))) {
                     carObject.death = true;
                     Message msg = obstacleManager.game_panel.game.handler.obtainMessage();

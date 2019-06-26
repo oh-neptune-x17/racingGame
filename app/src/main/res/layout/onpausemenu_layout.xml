@@ -17,24 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center_vertical">
 
-            <ImageView
+            <Button
                 android:id="@+id/imCont"
+                android:background="@drawable/btn"
+                android:textColor="@android:color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/btn" android:scaleType="fitXY" android:padding="10dp"/>
-
-            <TextView
-                android:id="@+id/continue_g"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/white"
-
                 android:text="@string/willBeContinued"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textSize="25sp"
+                android:src="@drawable/btn"
+                android:padding="10dp"/>
 
         </RelativeLayout>
 
@@ -42,24 +36,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_weight="1">
 
-            <ImageView
+            <Button
                 android:id="@+id/toMain"
+                android:background="@drawable/btn"
+                android:textColor="@android:color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/btn" android:scaleType="fitXY" android:padding="10dp"
+                android:src="@drawable/btn"
+                android:padding="10dp"
+                android:textSize="25sp"
+                android:text="@string/menu_goback"
                 tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/go_mainmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/white"
-                android:text="@string/gotoMainMenu"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </RelativeLayout>
 

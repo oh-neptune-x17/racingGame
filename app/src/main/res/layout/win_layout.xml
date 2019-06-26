@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/Rel"
+    android:id="@+id/winConditionRelLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" android:layout_margin="15dp"
@@ -24,7 +24,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textColor="@android:color/white"
-
                 android:text="@string/win"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -34,24 +33,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_weight="1">
 
-            <ImageView
+            <Button
                 android:id="@+id/toMain"
+                android:background="@drawable/btn"
+                android:textColor="@android:color/white"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/btn" android:scaleType="fitXY" android:padding="10dp"/>
+                android:src="@drawable/btn"
+                android:padding="10dp"
+                android:textSize="25sp"
+                android:text="@string/menu_goback"/>
 
-            <TextView
-                android:id="@+id/go_mainmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/white"
-
-                android:text="@string/gotoMainMenu"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </RelativeLayout>
 

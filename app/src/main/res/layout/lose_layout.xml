@@ -31,25 +31,20 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_weight="1">
-
-            <ImageView
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button
+                android:background="@drawable/btn"
+                android:textColor="@android:color/white"
                 android:id="@+id/toMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/button2" android:scaleType="fitXY" android:padding="10dp"/>
-
-            <TextView
-                android:id="@+id/go_mainmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/white"
-                android:text="@string/gotoMainMenu"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:text="@string/menu_goback"
+                android:textSize="25sp"
+                android:src="@drawable/btn"
+                android:padding="10dp"/>
 
         </RelativeLayout>
 

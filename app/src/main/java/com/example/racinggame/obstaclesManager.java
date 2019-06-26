@@ -27,10 +27,10 @@ public class obstaclesManager {
             topwall = new ArrayList<>();
             bottomwall = new ArrayList<>();
             for (int i = 0; i< obstperScreen +1; i++){
-                obstaclesLoader obstacleloader = new obstaclesLoader(obstacleTexture, width+200+ obstacleTexture.getWidth()*i, 0);
+                obstaclesLoader obstacleloader = new obstaclesLoader(obstacleTexture, width+ obstacleTexture.getWidth()*i, 0);
                 obstacleloader.setManager (this);  // manager for top line of obstacles
                 topwall.add(obstacleloader);
-                obstaclesLoader anotherobstacleloader = new obstaclesLoader(obstacleTexture, width+200+ obstacleTexture.getWidth()*i, 0);
+                obstaclesLoader anotherobstacleloader = new obstaclesLoader(obstacleTexture, width+ obstacleTexture.getWidth()*i, 0);
                 anotherobstacleloader.setManager (this); // manager for bottom line of obstacles
                 bottomwall.add(anotherobstacleloader);
             }
@@ -42,12 +42,12 @@ public class obstaclesManager {
             sH = screenH;
             halfS =screenH/2;
             int newsH = screenH * 2/5;
-            int gap =  (sH - newsH) / obstperScreen;
+            int gap =  (sH - newsH) / obstperScreen; // subtract int value from this expression to make gap broader
             for (int i = 0; i< obstperScreen +1; i++){
                 sH -= gap;
                 h = topwall.get(i).getBitmap().getHeight()/2;
-                topwall.get(i).setY(halfS - sH /2-h);
-                bottomwall.get(i).setY(halfS + sH /2+h);
+                topwall.get(i).setY(halfS - sH/2 - h);
+                bottomwall.get(i).setY(halfS + sH/2 + h);
             }
         }
         public void draw(Canvas canvas){

@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +23,6 @@ public class gameActivity extends Activity{
         final static int DEATH = 1;
         final static int LOSE = 2;
 
-        View pauseButton;
         View pauseMenu;
         View winInfo;
         View lostInfo;
@@ -71,51 +71,42 @@ public class gameActivity extends Activity{
             gameWindow = new gameLogic(getApplicationContext(),this,widthS, heightS);
 
             mainGameLay.addView(gameWindow);
-            RelativeLayout RR = new RelativeLayout(this);
-            RR.setBackgroundResource(R.drawable.btn);
-            RR.setGravity(Gravity.CENTER);
-            mainGameLay.addView(RR,380,160);
-            RR.setX(0);
-            txt= new TextView(this);
+            RelativeLayout relativeLayout = new RelativeLayout(this);
+            relativeLayout.setBackgroundResource(R.drawable.btn);
+            relativeLayout.setGravity(Gravity.CENTER);
+            int scoreWidth = widthS/6;
+            int scoreHeight = heightS/6;
+            mainGameLay.addView(relativeLayout,scoreWidth, scoreHeight);
+            relativeLayout.setX(0);
+            txt = new TextView(this);
             txt.setTextColor(Color.WHITE);
-            txt.setText("Score: " + score);
-            RR.addView(txt);
+            txt.setText(getResources().getString(R.string.score) + score);
 
-            getApplicationContext();
+            relativeLayout.addView(txt);
+
             LayoutInflater myInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-            pauseButton = myInflater.inflate(R.layout.pause_layout, mainGameLay, false);
-            pauseButton.setX(widthS-250);
-            pauseButton.setY(0);
-            mainGameLay.addView(pauseButton);
-
-           // ImageView pauseImage = pauseButton.findViewById(R.id.PauseImage);
-          //  pauseButton.setOnTouchListener(new buttonTouched(pauseImage));
-            pauseButton.setOnClickListener(pauseClicked);
-            pauseButton.getLayoutParams().height = 250;
-            pauseButton.getLayoutParams().width = 250;
 
             pauseMenu = myInflater.inflate(R.layout.onpausemenu_layout, mainGameLay, false);
             mainGameLay.addView(pauseMenu);
             pauseMenu.setVisibility(View.GONE);
 
-            ImageView continueButton = pauseMenu.findViewById(R.id.imCont);
-            ImageView toMainMenu = pauseMenu.findViewById(R.id.toMain);
-          //  continueButton.setOnTouchListener(new buttonTouched(continueButton));
+
+
+            Button continueButton = pauseMenu.findViewById(R.id.imCont);
             continueButton.setOnClickListener(continueClicked);
-           // toMainMenu.setOnTouchListener(new buttonTouched(toMainMenu));
+
+            Button toMainMenu = pauseMenu.findViewById(R.id.toMain);
             toMainMenu.setOnClickListener(this.toMainMenu);
 
             winInfo = myInflater.inflate(R.layout.win_layout, mainGameLay, false);
             mainGameLay.addView(winInfo);
-            ImageView gotoMain = winInfo.findViewById(R.id.toMain);
-           // gotoMain.setOnTouchListener(new buttonTouched(gotoMain));
+            Button gotoMain = winInfo.findViewById(R.id.toMain);
             gotoMain.setOnClickListener(this.toMainMenu);
             winInfo.setVisibility(View.GONE);
 
             lostInfo = myInflater.inflate(R.layout.lose_layout, mainGameLay, false);
             mainGameLay.addView(lostInfo);
-            ImageView lostContinuation = lostInfo.findViewById(R.id.toMain);
-          //  lostContinuation.setOnTouchListener(new buttonTouched(lostContinuation));
+            Button lostContinuation = lostInfo.findViewById(R.id.toMain);
             lostContinuation.setOnClickListener(this.toMainMenu);
             lostInfo.setVisibility(View.GONE);
         }
@@ -135,23 +126,12 @@ public class gameActivity extends Activity{
         @Override
         public void onClick(View v) {
             pauseMenu.setVisibility(View.GONE);
-            pauseButton.setVisibility(View.VISIBLE);
             gameWindow.gamePaused =false;
-        }
-    };
-    OnClickListener pauseClicked =new OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-            pauseButton.setVisibility(View.GONE);
-            pauseMenu.setVisibility(View.VISIBLE);
-            gameWindow.gamePaused =true;
         }
     };
 
         @Override
         public void onBackPressed() {
-            pauseButton.setVisibility(View.GONE);
             pauseMenu.setVisibility(View.VISIBLE);
             gameWindow.gamePaused =true;
         }
@@ -176,12 +156,10 @@ public class gameActivity extends Activity{
                 winLogic();
             }
         }
-
         private void winLogic() {
-            gameWindow.gamePaused =true;
+            gameWindow.gamePaused = true;
             winInfo.setVisibility(View.VISIBLE);
         }
-
     }
 
 

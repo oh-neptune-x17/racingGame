@@ -7,16 +7,16 @@ public class moveBackground {
 
         Bitmap bgTexture;
         int x,y;
-        int ScreenWidth;
+        int screenWidth;
         int bgcnter;
         gameLogic gamePanel;
 
-        public moveBackground(Bitmap bitmap , int Screen_w, gameLogic gamePanel) {
+        public moveBackground(Bitmap bitmap , int screenWidth, gameLogic gamePanel) {
             this.bgTexture = bitmap;
             this.x=0;
             this.y=0;
-            this.ScreenWidth=Screen_w;
-            bgcnter = ScreenWidth/ bgTexture.getWidth();
+            this.screenWidth = screenWidth;
+            bgcnter = this.screenWidth / bgTexture.getWidth();
             this.gamePanel = gamePanel;
         }
 
@@ -25,12 +25,9 @@ public class moveBackground {
                 if (canvas!=null)
                     canvas.drawBitmap(bgTexture, bgTexture.getWidth()*i+x, y, null);
             }
-            if (Math.abs(x)> bgTexture.getWidth())
-            {
+            if (Math.abs(x) > bgTexture.getWidth())
                 x = x + bgTexture.getWidth();
-            }
         }
-
         public void update(float dt){
             x = (int) (x - gamePanel.carSpeed *dt);
         }

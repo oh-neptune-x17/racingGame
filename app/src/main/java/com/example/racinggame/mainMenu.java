@@ -5,38 +5,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
 
 public class mainMenu extends Activity {
-    RelativeLayout startButton;
-    RelativeLayout exitButton;
-    ImageView startImgButton;
-    ImageView exitImgButton;
-    TextView txt;
+
+    Button buttonStart;
+    Button buttonExit;
+    LinearLayout hub;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startButton = findViewById(R.id.start_button);
-        exitButton = findViewById(R.id.exit_button);
-        startImgButton = findViewById(R.id.img_button2);
-        exitImgButton =  findViewById(R.id.img_button2);
-        txt = findViewById(R.id.start_gameText);
+        hub = findViewById(R.id.hub);
+        buttonStart = hub.findViewById(R.id.startBtn);
+        buttonExit = hub.findViewById(R.id.exitBtn);
 
-//        startButton.setOnTouchListener(new buttonTouched(startImgButton));
-//        exitButton.setOnTouchListener(new buttonTouched(exitImgButton));
-
-        exitButton.setOnClickListener(new OnClickListener() {
+        buttonExit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
-        startButton.setOnClickListener(new OnClickListener() {
+        buttonStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(mainMenu.this, gameActivity.class);
