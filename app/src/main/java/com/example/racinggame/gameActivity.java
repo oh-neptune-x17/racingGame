@@ -1,7 +1,6 @@
 package com.example.racinggame;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,16 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 public class gameActivity extends Activity{
 
-        final static int UPDATE_SCORE = 0;
-        final static int DEATH = 1;
-        final static int LOSE = 2;
+        final static int scoreUpdate = 0;
+        final static int crashed = 1;
+        final static int lost = 2;
 
         View pauseMenu;
         View winInfo;
@@ -37,21 +35,21 @@ public class gameActivity extends Activity{
         final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                if (msg.what==UPDATE_SCORE){
+                if (msg.what== scoreUpdate){
                     coinGatheredLogic();
                 }
-                if (msg.what==DEATH){
+                if (msg.what== crashed){
                     postDelayed(new Runnable() {
 
                         @Override
                         public void run() {
                             Message msg = handler.obtainMessage();
-                            msg.what = LOSE;
+                            msg.what = lost;
                             handler.sendMessage(msg);
                         }
                     }, 3000);
                 }
-                if (msg.what==LOSE){
+                if (msg.what== lost){
                     loseLogic();
                 }
                 super.handleMessage(msg);
