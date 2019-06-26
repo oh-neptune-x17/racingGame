@@ -62,7 +62,7 @@ public class gameActivity extends Activity{
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.game_layout);
-            mainGameLay = findViewById(R.id.main_game_rl);
+            mainGameLay = findViewById(R.id.gamescreen);
             DisplayMetrics dm = new DisplayMetrics();
             this.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
